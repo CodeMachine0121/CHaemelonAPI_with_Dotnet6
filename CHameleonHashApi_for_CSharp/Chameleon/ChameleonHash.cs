@@ -67,4 +67,5 @@ public class ChameleonHash : SignatureInterface
         Console.WriteLine($"\t[-] Verify Result: {result}");
         return result;
     }
+    
 }

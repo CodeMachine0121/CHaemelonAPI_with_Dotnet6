@@ -1,3 +1,4 @@
+using System.Runtime.Intrinsics.Arm;
 using CHameleonHashApi_for_CSharp;
 using ECC_Practice;
 using ECC_Practice.Models;
@@ -63,15 +64,20 @@ app.MapPost("/dataReqeust", async (HttpRequest request) =>
         new BigInteger(receivedMessage.publicKey.x,16),
         new BigInteger(receivedMessage.publicKey.y,16)
     );
-    var result = chameleon.Verifying(receivedMessage.message, new BigInteger(receivedMessage.signature, 16), publicKey);
+    var demsg = AESCipher.Decryption(receivedMessage.message, chameleon.sessionKey.ToString(16)); // Decryption
+    var result = chameleon.Verifying(demsg, new BigInteger(receivedMessage.signature, 16), publicKey);
+    
     if (!result)
         return Results.Unauthorized();
+    
     // send Message back and sign it
     var msgBack = "This is data you want";
+    var enmsg = AESCipher.Encryption(msgBack, chameleon.sessionKey.ToString(16));// Encryption
+    
     var order = keypair.getPublicKey().Curve.Order;
     var r = chameleon.Signing(msgBack, order).ToString(16);
     var publicObj = new PointObject(){x=keypair.getPublicKey().XCoord.ToString(), y = keypair.getPublicKey().YCoord.ToString()};
-    return Results.Ok(new MessageObject(){message = msgBack, signature = r, publicKey = publicObj});
+    return Results.Ok(new MessageObject(){message = enmsg, signature = r, publicKey = publicObj});
 });
 
 app.UseHttpsRedirection();
