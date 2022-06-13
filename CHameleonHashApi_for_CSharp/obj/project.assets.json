@@ -268,24 +268,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\james\\.nuget\\packages\\": {},
-    "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\james\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\james\\Desktop\\C#\\MinimalShoppingListApi\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\james\\Desktop\\變色龍雜湊\\電動車聯網加密\\CHaemelonAPI_with_Dotnet6\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
       "projectName": "CHameleonHashApi_for_CSharp",
-      "projectPath": "C:\\Users\\james\\Desktop\\C#\\MinimalShoppingListApi\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
+      "projectPath": "C:\\Users\\james\\Desktop\\變色龍雜湊\\電動車聯網加密\\CHaemelonAPI_with_Dotnet6\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
       "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\james\\Desktop\\C#\\MinimalShoppingListApi\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp\\obj\\",
+      "outputPath": "C:\\Users\\james\\Desktop\\變色龍雜湊\\電動車聯網加密\\CHaemelonAPI_with_Dotnet6\\CHameleonHashApi_for_CSharp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "E:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\james\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -342,7 +337,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   },

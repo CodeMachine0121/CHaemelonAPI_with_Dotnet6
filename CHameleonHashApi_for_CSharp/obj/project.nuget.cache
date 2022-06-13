@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lSrmxuX7MlSwSBZWk+66jfHzeSAFirpEQNCMfNSJomiTfDZmcMIX1LVbhv7kWbsBCOxH9BRqgOD6w9NJGHRUYg==",
+  "dgSpecHash": "i8YCfIli1kxEN+iz7PCigPZC520XA/MHZFQj7oWp2y5cp8dkfIEoxeRHamhSPKBgpkLJIRJm8GDSsy6Ra00Jjg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\james\\Desktop\\C#\\MinimalShoppingListApi\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
+  "projectFilePath": "C:\\Users\\james\\Desktop\\變色龍雜湊\\電動車聯網加密\\CHaemelonAPI_with_Dotnet6\\CHameleonHashApi_for_CSharp\\CHameleonHashApi_for_CSharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\james\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
     "C:\\Users\\james\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

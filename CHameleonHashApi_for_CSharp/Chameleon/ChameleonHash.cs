@@ -1,23 +1,23 @@
 ﻿using System.Text;
+using CHameleonHashApi_for_CSharp;
 using Org.BouncyCastle.Crypto.Digests;
-using Org.BouncyCastle.Crypto.Parameters;
+
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
-using Org.BouncyCastle.Security;
-using Org.BouncyCastle.Utilities;
 
-namespace CHameleonHashApi_for_CSharp;
+
+namespace ECC_Practice;
 
 public class ChameleonHash : SignatureInterface
 {
     private BigInteger kn;
     public BigInteger? sessionKey;
-    public ECPoint P, Kn ,CH;
+    public ECPoint P, CH, Kn;
     
     public ChameleonHash(ECPoint P, BigInteger kn, ECPoint Kn)
     {
-        this.kn = kn;
-        this.kn = kn;
+        this.kn = kn; // private key
+        this.Kn = Kn; // public key
         this.P = P;
     }
     
@@ -35,32 +35,36 @@ public class ChameleonHash : SignatureInterface
     // 設置 Session
     public void setSessionkey(ECPoint rP)
     {
+        Console.WriteLine("[+] setSessionkey Phase: ");
         this.sessionKey = rP.Multiply(this.kn).Normalize().XCoord.ToBigInteger();
-        
         // calculate Chameleon Hash
         BigInteger msgHash = Hash("Helloworld");
         var dn = msgHash.Multiply(this.kn).Multiply(new BigInteger(BitConverter.GetBytes(-1)));
         var rn = this.sessionKey.Add(dn);
         this.CH = this.Kn.Multiply(msgHash).Add(P.Multiply(rn)).Normalize();
-        Console.WriteLine("[+] SK: "+dn.ToString());
-        Console.WriteLine("[+] CH: "+CH.XCoord.ToString()+" , "+CH.YCoord.ToString());
+        Console.WriteLine("\t[-] SK: "+this.sessionKey.ToString(16));
+        Console.WriteLine("\t[-] CH: "+CH.XCoord.ToString()+" , "+CH.YCoord.ToString());
     }
 
   
-    public BigInteger Signing(string msg)
+    public BigInteger Signing(string msg, BigInteger order)
     {
+        Console.WriteLine("[+] Chamemelon Hash Signing Phase: ");
         BigInteger msgHash = Hash(msg);
         var dn = msgHash.Multiply(this.kn).Multiply(new BigInteger(BitConverter.GetBytes(-1)));
-        var rn = this.sessionKey.Add(dn);
+        var rn = this.sessionKey.Add(dn).Mod(order);
+        Console.WriteLine($"\t[-] Message: {msg}");
+        Console.WriteLine($"\t[-] Signature: {rn.ToString(16)}");
         return rn;
     }
 
     public bool Verifying(string msg, BigInteger r, ECPoint PublicKey)
     {
+        Console.WriteLine("[+] Chameleon Hash Verify Phase: ");
         var msgHash = Hash(msg);
         var CH = PublicKey.Multiply(msgHash).Add(P.Multiply(r)).Normalize();
-        if (CH.Equals(this.CH))
-            return true;
-        return false;
+        var result = CH.Equals(this.CH);
+        Console.WriteLine($"\t[-] Verify Result: {result}");
+        return result;
     }
 }

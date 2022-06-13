@@ -5,6 +5,6 @@ namespace CHameleonHashApi_for_CSharp;
 
 public interface SignatureInterface
 {
-    public BigInteger Signing(string msg);
+    public BigInteger Signing(string msg, BigInteger order);
     public bool Verifying(string msg, BigInteger r, ECPoint PublicKey);
 }
